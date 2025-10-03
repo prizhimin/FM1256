@@ -15,14 +15,14 @@ void KeyPad_Init()
 
 unsigned char KeyPad_Scan()
 {
-	//	Возвращает:
-	//	255 - нет нажатия
-	//  0..9 - цифры
-	//	знаки и буквы - ASCII-код символа
+	//	Р’РѕР·РІСЂР°С‰Р°РµС‚:
+	//	255 - РЅРµС‚ РЅР°Р¶Р°С‚РёСЏ
+	//  0..9 - С†РёС„СЂС‹
+	//	Р·РЅР°РєРё Рё Р±СѓРєРІС‹ - ASCII-РєРѕРґ СЃРёРјРІРѕР»Р°
 	KEYPAD_PORT = KEYPAD_ROWA | KEYPAD_ROWB | KEYPAD_ROWC | KEYPAD_ROWD;
-	if(!(KEYPAD_PIN & (KEYPAD_COL1 | KEYPAD_COL2 | KEYPAD_COL3 | KEYPAD_COL4)))		// Если ни одна клавиша не нажата
-		return 255;																	// то выходим с кодом 255
-	KEYPAD_PORT = KEYPAD_ROWA;			// 1я строчка - цифры 7, 8, 9, кнопка A
+	if(!(KEYPAD_PIN & (KEYPAD_COL1 | KEYPAD_COL2 | KEYPAD_COL3 | KEYPAD_COL4)))		// Р•СЃР»Рё РЅРё РѕРґРЅР° РєР»Р°РІРёС€Р° РЅРµ РЅР°Р¶Р°С‚Р°
+		return 255;																	// С‚Рѕ РІС‹С…РѕРґРёРј СЃ РєРѕРґРѕРј 255
+	KEYPAD_PORT = KEYPAD_ROWA;			// 1СЏ СЃС‚СЂРѕС‡РєР° - С†РёС„СЂС‹ 7, 8, 9, РєРЅРѕРїРєР° A
 	switch(KEYPAD_PIN & (KEYPAD_COL1 | KEYPAD_COL2 | KEYPAD_COL3 | KEYPAD_COL4))
 	{
 		case KEYPAD_COL1:
@@ -34,7 +34,7 @@ unsigned char KeyPad_Scan()
 		case KEYPAD_COL4:
 			return 'A';
 	}
-	KEYPAD_PORT = KEYPAD_ROWB;			// 2я строчка - цифры 4, 5, 6, кнопка B
+	KEYPAD_PORT = KEYPAD_ROWB;			// 2СЏ СЃС‚СЂРѕС‡РєР° - С†РёС„СЂС‹ 4, 5, 6, РєРЅРѕРїРєР° B
 	switch(KEYPAD_PIN & (KEYPAD_COL1 | KEYPAD_COL2 | KEYPAD_COL3 | KEYPAD_COL4))
 	{
 		case KEYPAD_COL1:
@@ -46,7 +46,7 @@ unsigned char KeyPad_Scan()
 		case KEYPAD_COL4:
 			return 'B';
 	}
-	KEYPAD_PORT = KEYPAD_ROWC;			// 3я строчка - цифры 1, 2, 3, кнопка C
+	KEYPAD_PORT = KEYPAD_ROWC;			// 3СЏ СЃС‚СЂРѕС‡РєР° - С†РёС„СЂС‹ 1, 2, 3, РєРЅРѕРїРєР° C
 	switch(KEYPAD_PIN & (KEYPAD_COL1 | KEYPAD_COL2 | KEYPAD_COL3 | KEYPAD_COL4))
 	{
 		case KEYPAD_COL1:
@@ -58,7 +58,7 @@ unsigned char KeyPad_Scan()
 		case KEYPAD_COL4:
 			return 'C';
 	}
-	KEYPAD_PORT = KEYPAD_ROWD;			// 4я строчка - кнопка *, цифра 0, кнопки # и D
+	KEYPAD_PORT = KEYPAD_ROWD;			// 4СЏ СЃС‚СЂРѕС‡РєР° - РєРЅРѕРїРєР° *, С†РёС„СЂР° 0, РєРЅРѕРїРєРё # Рё D
 	switch(KEYPAD_PIN & (KEYPAD_COL1 | KEYPAD_COL2 | KEYPAD_COL3 | KEYPAD_COL4))
 	{
 		case KEYPAD_COL1:
