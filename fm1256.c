@@ -40,7 +40,7 @@ void FM1256_update()
 	I2CStart();
 	I2CWriteByte(TDA9887);
 	I2CWriteByte(byteSAD);					// 0);
-	I2CWriteByte(byteB);					// 0xСE);
+	I2CWriteByte(byteB);					// 0xРЎE);
 	I2CWriteByte(byteC);					// 0xD0);
 	I2CWriteByte(byteE);					// 0x7F);
 	I2CStop();
@@ -79,14 +79,14 @@ void FM1256_SetFreq(uint32_t kHzFreq)
 	FM1256_update();	
 }
 
-void FM1256_SetStep3125()									// Устанавливает шаг изменения частоты в 31.25 кГц
+void FM1256_SetStep3125()									// РЈСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ С€Р°Рі РёР·РјРµРЅРµРЅРёСЏ С‡Р°СЃС‚РѕС‚С‹ РІ 31.25 РєР“С†
 {
 	StepHz = 31250;
 	byteCB &= ~bitRSA;
 	byteCB |= bitRSB;
 	FM1256_update();
 }
-void FM1256_SetStep50()										// Устанавливает шаг изменения частоты в 50 кГц
+void FM1256_SetStep50()										// РЈСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ С€Р°Рі РёР·РјРµРЅРµРЅРёСЏ С‡Р°СЃС‚РѕС‚С‹ РІ 50 РєР“С†
 {
 	StepHz = 50000;
 	byteCB &= ~(bitRSA | bitRSB);
