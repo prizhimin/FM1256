@@ -3,14 +3,14 @@
 #include <util/delay.h>
 #include "hardware.h"
 
-#define LENLONG 12	// максимальное количество (включая знак -) десятичных цифр в переменной типа long
+#define LENLONG 12	// РјР°РєСЃРёРјР°Р»СЊРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ (РІРєР»СЋС‡Р°СЏ Р·РЅР°Рє -) РґРµСЃСЏС‚РёС‡РЅС‹С… С†РёС„СЂ РІ РїРµСЂРµРјРµРЅРЅРѕР№ С‚РёРїР° long
 
 void LCD_PulseEN();
 void LCD_SendByte(char, int);
 void LCD_Send4bits(unsigned char);
 
 
-void LCD_GoTo(char Row, char Col)    					// Установка курсора в заданные координаты
+void LCD_GoTo(char Row, char Col)    					// РЈСЃС‚Р°РЅРѕРІРєР° РєСѓСЂСЃРѕСЂР° РІ Р·Р°РґР°РЅРЅС‹Рµ РєРѕРѕСЂРґРёРЅР°С‚С‹
 {
     char address;
 	switch(Row)
@@ -32,14 +32,14 @@ void LCD_GoTo(char Row, char Col)    					// Установка курсора в заданные коорди
 // Clear the screen data and return the
 // cursor to home position
 
-void LCD_Clear()										// Очистка экрана дисплея
+void LCD_Clear()										// РћС‡РёСЃС‚РєР° СЌРєСЂР°РЅР° РґРёСЃРїР»РµСЏ
 {
     LCD_SendByte(0x01, FALSE);
     LCD_SendByte(0x02, FALSE);
 	_delay_ms(2);
 }
 
-void LCD_Init(void)										// Инициализация дисплея (16*2, 5*7, Display on, cursor off, blink cursor off)
+void LCD_Init(void)										// РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РґРёСЃРїР»РµСЏ (16*2, 5*7, Display on, cursor off, blink cursor off)
 {
     LCD_DIR |= LCD_MASK;    							
 	_delay_ms(15);
@@ -58,7 +58,7 @@ void LCD_Init(void)										// Инициализация дисплея (16*2, 5*7, Display on, cu
     LCD_SendByte(0x06, FALSE);
 }
 
-void LCD_PrintStr(unsigned char *Text)							// Печать строки
+void LCD_PrintStr(unsigned char *Text)							// РџРµС‡Р°С‚СЊ СЃС‚СЂРѕРєРё
 {
     unsigned char *c;
 
@@ -71,12 +71,12 @@ void LCD_PrintStr(unsigned char *Text)							// Печать строки
     }
 }
 
-void LCD_PrintDec(long data){	// Печать десятичного числа
+void LCD_PrintDec(long data){	// РџРµС‡Р°С‚СЊ РґРµСЃСЏС‚РёС‡РЅРѕРіРѕ С‡РёСЃР»Р°
 
-	unsigned char s[LENLONG],	// Массив символов для вывода
-	sign=0,						// Флаг знака выводимого числа
-	i=LENLONG-1;				// Индекс, указывает на последний элемент массива
-	long tmp_data;				// Временная переменая для хранения выводимого числа
+	unsigned char s[LENLONG],	// РњР°СЃСЃРёРІ СЃРёРјРІРѕР»РѕРІ РґР»СЏ РІС‹РІРѕРґР°
+	sign=0,						// Р¤Р»Р°Рі Р·РЅР°РєР° РІС‹РІРѕРґРёРјРѕРіРѕ С‡РёСЃР»Р°
+	i=LENLONG-1;				// РРЅРґРµРєСЃ, СѓРєР°Р·С‹РІР°РµС‚ РЅР° РїРѕСЃР»РµРґРЅРёР№ СЌР»РµРјРµРЅС‚ РјР°СЃСЃРёРІР°
+	long tmp_data;				// Р’СЂРµРјРµРЅРЅР°СЏ РїРµСЂРµРјРµРЅР°СЏ РґР»СЏ С…СЂР°РЅРµРЅРёСЏ РІС‹РІРѕРґРёРјРѕРіРѕ С‡РёСЃР»Р°
 	
 	tmp_data=data;
 
@@ -87,7 +87,7 @@ void LCD_PrintDec(long data){	// Печать десятичного числа
 	
 	do
 	{
-		s[i--]=tmp_data % 10 + '0';			// Заполняем с конца массив выводимых символов
+		s[i--]=tmp_data % 10 + '0';			// Р—Р°РїРѕР»РЅСЏРµРј СЃ РєРѕРЅС†Р° РјР°СЃСЃРёРІ РІС‹РІРѕРґРёРјС‹С… СЃРёРјРІРѕР»РѕРІ
 		tmp_data /= 10;
 	} while (tmp_data>0);
 	
@@ -96,7 +96,7 @@ void LCD_PrintDec(long data){	// Печать десятичного числа
 	else
 		i++;
 	do
-		LCD_SendByte(s[i++], TRUE);			// Выводим символ на экран
+		LCD_SendByte(s[i++], TRUE);			// Р’С‹РІРѕРґРёРј СЃРёРјРІРѕР» РЅР° СЌРєСЂР°РЅ
 	while (i<LENLONG);
 }
 
