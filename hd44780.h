@@ -1,17 +1,17 @@
 /*
  * ht4480.h
  *
- *  Created on: 27 окт. 2014 г.
+ *  Created on: 27 РѕРєС‚. 2014 Рі.
  *      Author: prinv
  *
- *  За основу взята библиотека с http://www.shelezyakin.ru/?p=711
+ *  Р—Р° РѕСЃРЅРѕРІСѓ РІР·СЏС‚Р° Р±РёР±Р»РёРѕС‚РµРєР° СЃ http://www.shelezyakin.ru/?p=711
  */
 
 #ifndef HT4480_H_
 #define HT4480_H_
 
 
-// Управляющие символы дисплея.
+// РЈРїСЂР°РІР»СЏСЋС‰РёРµ СЃРёРјРІРѕР»С‹ РґРёСЃРїР»РµСЏ.
 
 #define LCD_CLEAR 0x01	//
 
@@ -20,24 +20,24 @@
 #define LCD_DEC				0b00000100
 #define LCD_INC				0b00000110
 
-#define LCD_ON				0b00001100	//	Включить дисплей
-#define LCD_OFF				0b00001000	//	Выключить дисплей
-#define LCD_CURSOR_ON		0b00001101	//	Включить курсор
-#define LCD_CURSOR_OFF		0b00001100	//	Выключить курсор
-#define LCD_BLINK_ON		0b00001111	//	Включить мигание курсора
-#define LCD_BLINK_OFF		0b00001110	//	Выключить мигание курсора
+#define LCD_ON				0b00001100	//	Р’РєР»СЋС‡РёС‚СЊ РґРёСЃРїР»РµР№
+#define LCD_OFF				0b00001000	//	Р’С‹РєР»СЋС‡РёС‚СЊ РґРёСЃРїР»РµР№
+#define LCD_CURSOR_ON		0b00001101	//	Р’РєР»СЋС‡РёС‚СЊ РєСѓСЂСЃРѕСЂ
+#define LCD_CURSOR_OFF		0b00001100	//	Р’С‹РєР»СЋС‡РёС‚СЊ РєСѓСЂСЃРѕСЂ
+#define LCD_BLINK_ON		0b00001111	//	Р’РєР»СЋС‡РёС‚СЊ РјРёРіР°РЅРёРµ РєСѓСЂСЃРѕСЂР°
+#define LCD_BLINK_OFF		0b00001110	//	Р’С‹РєР»СЋС‡РёС‚СЊ РјРёРіР°РЅРёРµ РєСѓСЂСЃРѕСЂР°
 
-#define LCD_CURSOR_LEFT		0b00010000	//	Курсор влево
-#define LCD_CURSOR_RIGHT	0b00010100	//	Курсор вправо
-#define LCD_DYSPLAY_LEFT	0b00011000	//	Дисплей влево
-#define LCD_DYSPLAY_RIGHT	0b00011100	//	Дисплей вправо
+#define LCD_CURSOR_LEFT		0b00010000	//	РљСѓСЂСЃРѕСЂ РІР»РµРІРѕ
+#define LCD_CURSOR_RIGHT	0b00010100	//	РљСѓСЂСЃРѕСЂ РІРїСЂР°РІРѕ
+#define LCD_DYSPLAY_LEFT	0b00011000	//	Р”РёСЃРїР»РµР№ РІР»РµРІРѕ
+#define LCD_DYSPLAY_RIGHT	0b00011100	//	Р”РёСЃРїР»РµР№ РІРїСЂР°РІРѕ
 
-void LCD_Init();										// Инициализация дисплея
-void LCD_Clear();										// Очистка экрана дисплея
-void LCD_GoTo(char Row, char Col);						// Установка курсора в заданные координаты
-void LCD_PrintStr(char *Text);							// Печать строки
-void LCD_PrintDec(long data);							// Печать десятичного числа
-void LCD_SendByte(char, int);							// Посылка байта на дисплей
+void LCD_Init();										// РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РґРёСЃРїР»РµСЏ
+void LCD_Clear();										// РћС‡РёСЃС‚РєР° СЌРєСЂР°РЅР° РґРёСЃРїР»РµСЏ
+void LCD_GoTo(char Row, char Col);						// РЈСЃС‚Р°РЅРѕРІРєР° РєСѓСЂСЃРѕСЂР° РІ Р·Р°РґР°РЅРЅС‹Рµ РєРѕРѕСЂРґРёРЅР°С‚С‹
+void LCD_PrintStr(char *Text);							// РџРµС‡Р°С‚СЊ СЃС‚СЂРѕРєРё
+void LCD_PrintDec(long data);							// РџРµС‡Р°С‚СЊ РґРµСЃСЏС‚РёС‡РЅРѕРіРѕ С‡РёСЃР»Р°
+void LCD_SendByte(char, int);							// РџРѕСЃС‹Р»РєР° Р±Р°Р№С‚Р° РЅР° РґРёСЃРїР»РµР№
 
 
 
