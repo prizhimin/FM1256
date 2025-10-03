@@ -9,37 +9,37 @@
 
 #include "i2c.h"
 
-// Функция чтения данных из DS1307
+// Р¤СѓРЅРєС†РёСЏ С‡С‚РµРЅРёСЏ РґР°РЅРЅС‹С… РёР· DS1307
 uint8_t DS1307Read(uint8_t address,uint8_t *data)
 {
-	uint8_t res; // Результат
-	I2CStart(); // СТАРТ
-	res = I2CWriteByte(0b11010000); // адрес DS1307 + бит W
-	if(!res)    return 0; // ОШИБКА
-	// Передача адреса необходимого регистра
+	uint8_t res; // Р РµР·СѓР»СЊС‚Р°С‚
+	I2CStart(); // РЎРўРђР Рў
+	res = I2CWriteByte(0b11010000); // Р°РґСЂРµСЃ DS1307 + Р±РёС‚ W
+	if(!res)    return 0; // РћРЁРР‘РљРђ
+	// РџРµСЂРµРґР°С‡Р° Р°РґСЂРµСЃР° РЅРµРѕР±С…РѕРґРёРјРѕРіРѕ СЂРµРіРёСЃС‚СЂР°
 	res = I2CWriteByte(address);
-	if(!res)    return 0; // ОШИБКА
-	I2CStart(); // Повторный СТАРТ
-	res = I2CWriteByte(0b11010001); // адрес DS1307 + бит R
-	if(!res)    return 0; // ОШИБКА
-	// Чтение данных с неподтверждением
+	if(!res)    return 0; // РћРЁРР‘РљРђ
+	I2CStart(); // РџРѕРІС‚РѕСЂРЅС‹Р№ РЎРўРђР Рў
+	res = I2CWriteByte(0b11010001); // Р°РґСЂРµСЃ DS1307 + Р±РёС‚ R
+	if(!res)    return 0; // РћРЁРР‘РљРђ
+	// Р§С‚РµРЅРёРµ РґР°РЅРЅС‹С… СЃ РЅРµРїРѕРґС‚РІРµСЂР¶РґРµРЅРёРµРј
 	res = I2CReadByte(data,0);
-	if(!res)    return 0; // ОШИБКА
-	I2CStop(); // СТОП
+	if(!res)    return 0; // РћРЁРР‘РљРђ
+	I2CStop(); // РЎРўРћРџ
 	return 1;
 }
-// Функция записи данных в DS1307
+// Р¤СѓРЅРєС†РёСЏ Р·Р°РїРёСЃРё РґР°РЅРЅС‹С… РІ DS1307
 uint8_t DS1307Write(uint8_t address,uint8_t data)
 {
-	uint8_t res; // Результат
-	I2CStart(); // СТАРТ
-	res = I2CWriteByte(0b11010000); // адрес DS1307 + бит W
-	if(!res)    return 0; // ОШИБКА
-	// Передача адреса необходимого регистра
+	uint8_t res; // Р РµР·СѓР»СЊС‚Р°С‚
+	I2CStart(); // РЎРўРђР Рў
+	res = I2CWriteByte(0b11010000); // Р°РґСЂРµСЃ DS1307 + Р±РёС‚ W
+	if(!res)    return 0; // РћРЁРР‘РљРђ
+	// РџРµСЂРµРґР°С‡Р° Р°РґСЂРµСЃР° РЅРµРѕР±С…РѕРґРёРјРѕРіРѕ СЂРµРіРёСЃС‚СЂР°
 	res = I2CWriteByte(address);
-	if(!res)    return 0; // ОШИБКА
-	res = I2CWriteByte(data); // Запись данных
-	if(!res)    return 0; // ОШИБКА
-	I2CStop(); // СТОП
+	if(!res)    return 0; // РћРЁРР‘РљРђ
+	res = I2CWriteByte(data); // Р—Р°РїРёСЃСЊ РґР°РЅРЅС‹С…
+	if(!res)    return 0; // РћРЁРР‘РљРђ
+	I2CStop(); // РЎРўРћРџ
 	return 1;
 }

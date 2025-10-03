@@ -9,10 +9,10 @@
 #ifndef DS1307_H_
 #define DS1307_H_
 
-// Функция чтения данных из DS1307
+// Р¤СѓРЅРєС†РёСЏ С‡С‚РµРЅРёСЏ РґР°РЅРЅС‹С… РёР· DS1307
 uint8_t DS1307Read(uint8_t address,uint8_t *data);
 
-// Функция записи данных в DS1307
+// Р¤СѓРЅРєС†РёСЏ Р·Р°РїРёСЃРё РґР°РЅРЅС‹С… РІ DS1307
 uint8_t DS1307Write(uint8_t address,uint8_t data);
 
 #endif /* DS1307_H_ */
